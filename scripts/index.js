@@ -1,38 +1,20 @@
-var button = document.getElementById("enter");
-var input = document.getElementById("input");
-var ul = document.querySelector("ul");
-//Select all the initial lis
-var lis = document.querySelectorAll("li");
-//Create a variable for future delete buttons
-var deleteButton;
+// Initial Variables
+let button = document.getElementById("enter"); // Button
+let input = document.getElementById("input"); // Input
+let ul = document.querySelector("ul"); // List
 
-//Return Length of input
+// let deleteButton; // Delete Button
+
+
 function inputLength() {
     return input.value.length;
 }
 
-//Create delete buttons and append it to their parents(li)
-function createDeleteButton(parent) {
-    //Create element button
-    var button = document.createElement("button");
-    // Create and append text inside button
-    button.appendChild(document.createTextNode("X"));
-    // Give class=delete to buttons - Its's going to be used to select them in the future
-    button.className = "delete";
-    // append or insert the button to the parent element(li)
-    parent.appendChild(button);
-}
-
-//Toggle class=done when you invoke the function - use "this" to toggle only the one you selected
-function toggleDoneClass() {
-    this.classList.toggle("done");
-}
-
 //Create the "li" with everything it needs inside of it(text ,button, class)
 function createListElement() {
-    //Create "li"
-    var li = document.createElement("li");
-    var span = document.createElement("span");
+    // Storing the new item in li variable
+    let li = document.createElement("li");
+    let span = document.createElement("span");
     // Create text for the li according to what you put in the input
     li.appendChild(span);
     span.appendChild(document.createTextNode(input.value));
@@ -54,6 +36,23 @@ function createListElement() {
     input.value = "";
 }
 
+// //Create delete buttons and append it to their parents(li)
+// function createDeleteButton(parent) {
+//     //Create element button
+//     var button = document.createElement("button");
+//     // Create and append text inside button
+//     button.appendChild(document.createTextNode("X"));
+//     // Give class=delete to buttons - Its's going to be used to select them in the future
+//     button.className = "delete";
+//     // append or insert the button to the parent element(li)
+//     parent.appendChild(button);
+// }
+
+//Toggle class=done when you invoke the function - use "this" to toggle only the one you selected
+function toggleDoneClass() {
+    this.classList.toggle("done");
+}
+
 
 function addListAfterClick() {
     if (inputLength() > 0) {
@@ -67,14 +66,14 @@ function addListAfterKeypress(event) {
     }
 }
 
-//Applies the functionality to remove the li to all the buttons(new and old)
-function updateDeleteButtons() {
-    for (var i = 0; i < deleteButton.length; i++) {
-        deleteButton[i].addEventListener("click", function() {
-            this.parentNode.remove()
-        })
-    }
-}
+// //Applies the functionality to remove the li to all the buttons(new and old)
+// function updateDeleteButtons() {
+//     for (var i = 0; i < deleteButton.length; i++) {
+//         deleteButton[i].addEventListener("click", function() {
+//             this.parentNode.remove()
+//         })
+//     }
+// }
 
 button.addEventListener("click", addListAfterClick);
 
